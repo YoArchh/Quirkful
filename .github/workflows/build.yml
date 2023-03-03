@@ -19,8 +19,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v1
       - name: Setup JDK ${{ matrix.java }}
         uses: actions/setup-java@v3
         with:
@@ -32,3 +30,10 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build
         run: ./gradlew build
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: quirkful-build-artifacts-${{ steps.ref.outputs.branch }}
+
+          # Filter built files to disregard -sources and -dev, and leave only the Minecraft-compatible JARS.
+          path: build/libs/*[0-9].jar

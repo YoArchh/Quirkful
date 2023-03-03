@@ -18,6 +18,9 @@
   "entrypoints": {
     "main": [
       "me.yoarchh.quirkful.QuirkfulMod"
+    ],
+    "client": [
+      "me.yoarchh.quirkful.QuirkfulClientMod"
     ]
   },
   "mixins": [
