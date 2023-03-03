@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "quirkful",
+  "version": "${version}",
+  "name": "Quirkful",
+  "description": "Adds special meta abilities usable by players to Minecraft. Inspired by Quirks from My Hero Academia.",
+  "authors": [
+    "YoArchh"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/quirkful",
+    "repo": "https://github.com/YoArchh/Quirkful",
+    "issues": "https://github.com/YoArchh/Quirkful/issues"
+  },
+  "license": "LGPL-3.0",
+  "icon": "assets/quirkful/temporary-icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.yoarchh.quirkful.QuirkfulMod"
+    ]
+  },
+  "mixins": [
+    "quirkful.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.17",
+    "fabric": "*",
+    "minecraft": "1.19.3"
+  }
+}
