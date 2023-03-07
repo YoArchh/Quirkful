@@ -1,10 +1,11 @@
 package me.yoarchh.quirkful.input;
 
+import me.yoarchh.quirkful.QuirkfulMod;
+import me.yoarchh.quirkful.entity.player.QuirkfulPlayerEntity;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
 public class QuirkfulKeyInputHandler
@@ -31,11 +32,11 @@ public class QuirkfulKeyInputHandler
     {
         ClientTickEvents.END_CLIENT_TICK.register(mcClient ->
         {
-            // (YoArchh) - TODO: Handle quirk activation.
+            // FIXME: Quirk activation should not be handled on the client, but on the server.
             if (ACTIVATE_QUIRK.wasPressed())
             {
-                // Test
-                mcClient.player.sendMessage(Text.literal("Quirk Activated!"));
+                QuirkfulPlayerEntity quirkfulPlayer = QuirkfulMod.getInstance().quirkfulPlayer;
+                quirkfulPlayer.getQuirk().onQuirkActivate(quirkfulPlayer);
             }
         });
     }
