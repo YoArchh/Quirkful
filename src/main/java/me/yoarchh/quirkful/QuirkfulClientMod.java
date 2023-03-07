@@ -1,6 +1,7 @@
 package me.yoarchh.quirkful;
 
 import me.yoarchh.quirkful.input.QuirkfulKeyInputHandler;
+import me.yoarchh.quirkful.networking.QuirkfulPackets;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -20,6 +21,8 @@ public class QuirkfulClientMod implements ClientModInitializer
         INSTANCE = this;
 
         QuirkfulKeyInputHandler.initializeKeyBindings();
+
+        QuirkfulPackets.registerServerToClientPackets();
 
         LOGGER.info("Initialized Quirkful Client!");
     }

@@ -24,6 +24,6 @@ public class ServerPlayConnectionJoinEventHandler implements ServerPlayConnectio
         QuirkfulMod.getInstance().quirkfulPlayer = new QuirkfulPlayerEntity(playerWorld, playerBlockPos, playerYaw, playerGameProfile);
 
         // TEST
-        QuirkfulMod.getInstance().quirkfulPlayer.setQuirk(new TestQuirk());
+        QuirkfulMod.getInstance().getQuirkfulPlayer().setQuirk(new TestQuirk());
     }
 }

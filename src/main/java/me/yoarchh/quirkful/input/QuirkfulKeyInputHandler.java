@@ -1,9 +1,10 @@
 package me.yoarchh.quirkful.input;
 
-import me.yoarchh.quirkful.QuirkfulMod;
-import me.yoarchh.quirkful.entity.player.QuirkfulPlayerEntity;
+import me.yoarchh.quirkful.networking.QuirkfulPackets;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
@@ -32,12 +33,8 @@ public class QuirkfulKeyInputHandler
     {
         ClientTickEvents.END_CLIENT_TICK.register(mcClient ->
         {
-            // FIXME: Quirk activation should not be handled on the client, but on the server.
             if (ACTIVATE_QUIRK.wasPressed())
-            {
-                QuirkfulPlayerEntity quirkfulPlayer = QuirkfulMod.getInstance().quirkfulPlayer;
-                quirkfulPlayer.getQuirk().onQuirkActivate(quirkfulPlayer);
-            }
+                ClientPlayNetworking.send(QuirkfulPackets.QUIRK_ACTIVATION, PacketByteBufs.empty());
         });
     }
 }

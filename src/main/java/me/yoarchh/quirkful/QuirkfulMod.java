@@ -2,6 +2,7 @@ package me.yoarchh.quirkful;
 
 import me.yoarchh.quirkful.entity.player.QuirkfulPlayerEntity;
 import me.yoarchh.quirkful.events.server.ServerPlayConnectionJoinEventHandler;
+import me.yoarchh.quirkful.networking.QuirkfulPackets;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import org.apache.logging.log4j.LogManager;
@@ -24,6 +25,8 @@ public class QuirkfulMod implements ModInitializer
 
         ServerPlayConnectionEvents.JOIN.register(new ServerPlayConnectionJoinEventHandler());
 
+        QuirkfulPackets.registerClientToServerPackets();
+
         LOGGER.info("Initialized Quirkful!");
     }
 
@@ -32,4 +35,6 @@ public class QuirkfulMod implements ModInitializer
     public static Logger getLogger() { return LOGGER; }
 
     public static String getModID() { return MOD_ID; }
+
+    public QuirkfulPlayerEntity getQuirkfulPlayer() { return this.quirkfulPlayer; }
 }
