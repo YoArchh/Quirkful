@@ -1,5 +1,7 @@
 package me.yoarchh.quirkful;
 
+import me.yoarchh.quirkful.quirks.QuirkAttributes;
+import me.yoarchh.quirkful.quirks.QuirkCategory;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -16,6 +18,15 @@ public class QuirkfulMod implements ModInitializer
     public void onInitialize()
     {
         INSTANCE = this;
+
+        // (YoArchh) QuirkAttributes Test
+        QuirkAttributes quirkProps = QuirkAttributes.builder()
+                .name("Float")
+                .description("The quirk of the 7th user of One For All, Nana Shimura")
+                .category(QuirkCategory.EMITTER)
+                .build();
+
+        LOGGER.info("{}", quirkProps);
 
         LOGGER.info("Initialized Quirkful!");
     }
