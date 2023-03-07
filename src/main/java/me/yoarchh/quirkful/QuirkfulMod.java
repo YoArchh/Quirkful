@@ -1,8 +1,9 @@
 package me.yoarchh.quirkful;
 
-import me.yoarchh.quirkful.quirks.QuirkAttributes;
-import me.yoarchh.quirkful.quirks.QuirkCategory;
+import me.yoarchh.quirkful.entity.player.QuirkfulPlayerEntity;
+import me.yoarchh.quirkful.events.server.ServerPlayConnectionJoinEventHandler;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
@@ -14,19 +15,14 @@ public class QuirkfulMod implements ModInitializer
 
     private static final String MOD_ID = "quirkful";
 
+    public QuirkfulPlayerEntity quirkfulPlayer;
+
     @Override
     public void onInitialize()
     {
         INSTANCE = this;
 
-        // (YoArchh) QuirkAttributes Test
-        QuirkAttributes quirkProps = QuirkAttributes.builder()
-                .name("Float")
-                .description("The quirk of the 7th user of One For All, Nana Shimura")
-                .category(QuirkCategory.EMITTER)
-                .build();
-
-        LOGGER.info("{}", quirkProps);
+        ServerPlayConnectionEvents.JOIN.register(new ServerPlayConnectionJoinEventHandler());
 
         LOGGER.info("Initialized Quirkful!");
     }
