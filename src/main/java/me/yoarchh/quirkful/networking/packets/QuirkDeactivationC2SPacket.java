@@ -9,14 +9,14 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-public class QuirkActivationC2SPacket implements ServerPlayNetworking.PlayChannelHandler
+public class QuirkDeactivationC2SPacket implements ServerPlayNetworking.PlayChannelHandler
 {
     @Override
     public void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender)
     {
-        // Activate the player's Quirk.
+        // Deactivate the player's Quirk.
         final QuirkfulPlayerEntity quirkfulPlayer = QuirkfulMod.getInstance().getQuirkfulPlayer();
         if (!quirkfulPlayer.isQuirkless())
-            quirkfulPlayer.getQuirk().onQuirkActivate(quirkfulPlayer);
+            quirkfulPlayer.getQuirk().onQuirkDeactivate(quirkfulPlayer);
     }
 }

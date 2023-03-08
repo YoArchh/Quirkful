@@ -1,5 +1,7 @@
 package me.yoarchh.quirkful;
 
+import me.yoarchh.quirkful.events.custom.QuirkfulKeyboardEvents;
+import me.yoarchh.quirkful.events.impl.QuirkfulKeyReleasedEventHandler;
 import me.yoarchh.quirkful.input.QuirkfulKeyInputHandler;
 import me.yoarchh.quirkful.networking.QuirkfulPackets;
 import net.fabricmc.api.ClientModInitializer;
@@ -19,6 +21,8 @@ public class QuirkfulClientMod implements ClientModInitializer
     public void onInitializeClient()
     {
         INSTANCE = this;
+
+        QuirkfulKeyboardEvents.KEY_RELEASE.register(new QuirkfulKeyReleasedEventHandler());
 
         QuirkfulKeyInputHandler.initializeKeyBindings();
 

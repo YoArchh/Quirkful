@@ -33,7 +33,7 @@ public class QuirkfulKeyInputHandler
     {
         ClientTickEvents.END_CLIENT_TICK.register(mcClient ->
         {
-            if (ACTIVATE_QUIRK.wasPressed())
+            if (ACTIVATE_QUIRK.isPressed())
                 ClientPlayNetworking.send(QuirkfulPackets.QUIRK_ACTIVATION, PacketByteBufs.empty());
         });
     }

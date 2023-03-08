@@ -18,4 +18,10 @@ public class TestQuirk extends EmitterQuirk
     {
         QuirkfulMod.getLogger().info("{} activated their Quirk: {}", player.getName().getString(), this.getAttributes().getName());
     }
+
+    @Override
+    public void onQuirkDeactivate(QuirkfulPlayerEntity player)
+    {
+        QuirkfulMod.getLogger().info("{} deactivated their Quirk: {}", player.getName().getString(), this.getAttributes().getName());
+    }
 }

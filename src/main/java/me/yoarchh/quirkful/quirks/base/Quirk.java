@@ -14,5 +14,7 @@ public abstract class Quirk
 {
     public abstract void onQuirkActivate(QuirkfulPlayerEntity player);
 
+    public abstract void onQuirkDeactivate(QuirkfulPlayerEntity player);
+
     public abstract QuirkAttributes getAttributes();
 }
